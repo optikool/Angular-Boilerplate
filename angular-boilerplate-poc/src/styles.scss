@@ -1,1 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
+@import 'node_modules/bootstrap/scss/bootstrap';
+
+.container {
+  padding-top: 30px;
+  padding-bottom: 90px;
+}
+
+a:hover {
+  cursor: pointer;
+}
