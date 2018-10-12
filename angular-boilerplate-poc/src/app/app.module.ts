@@ -4,6 +4,7 @@ import { HttpClientModule } from '@angular/common/http'
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { CommonNavModule } from './components/common-nav.module';
@@ -25,6 +26,7 @@ import { CollectionEffects } from './store/collection.effects';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     HttpClientModule,
     CommonNavModule,
     SharedModule,
