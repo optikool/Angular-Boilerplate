@@ -1,3 +1,6 @@
 <h3>{{locale.Home}}</h3>
-<p>{{introText}}</p>
-<!-- <img class="img-fluid rounded mx-auto d-block" [src]="imagePlaceHolder.link" /> -->
+<div class="container-fluid" *ngIf="image">
+  <p>{{image.descriptions}}</p>
+  <p>-- {{image.author}}</p>
+  <img class="img-fluid rounded mx-auto d-block" [src]="image.link" />
+</div>

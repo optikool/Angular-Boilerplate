@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { locale } from '../../constants/locale.constant';
-import { Collection } from '../../interfaces/collection';
+import { Collection } from '../../models/collection';
 
 @Component({
   selector: 'app-instructions',
