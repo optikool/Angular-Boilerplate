@@ -1,1 +1,10 @@
-<p>Your answer code goes here.</p>
+<div class="container-fluid">
+  <preview-component></preview-component>
+  <div id="answer-image-list" class="row">
+    <div class="col-md-3" *ngFor="let image of images; index as i">
+      <div class="image-item mb-1" imageAnimationDirective [previewCollection]="image">
+        <img class="img-fluid mb-1" [src]="image.link" (click)="openModal(image)" />
+      </div>
+    </div>
+  </div>
+</div>

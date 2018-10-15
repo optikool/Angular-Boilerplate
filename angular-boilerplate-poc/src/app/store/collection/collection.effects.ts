@@ -3,10 +3,12 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map, switchMap, mergeMap } from 'rxjs/operators';
 import * as CollectionActions from './collection.actions';
-import { Collection } from '../models/collection';
+import { Collection } from '../../models/collection';
 
 @Injectable()
 export class CollectionEffects {
+  constructor(private actions: Actions, private http: HttpClient) {}
+
   @Effect()
   collectionFetch = this.actions
     .ofType(CollectionActions.FETCH_COLLECTIONS)
@@ -36,6 +38,4 @@ export class CollectionEffects {
         }
       ];
     }));
-
-  constructor(private actions: Actions, private http: HttpClient) {}
 }

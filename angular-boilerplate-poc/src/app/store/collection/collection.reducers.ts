@@ -1,5 +1,5 @@
 import * as CollectionActions from './collection.actions';
-import { Collection } from '../models/collection';
+import { Collection } from '../../models/collection';
 
 export interface AppState {
   collectionList: State
@@ -8,11 +8,13 @@ export interface AppState {
 export interface State {
   collections: Collection[];
   randomCollection: Collection;
+  previewCollection: Collection;
 }
 
 const initialState: State = {
   collections: [],
-  randomCollection: null
+  randomCollection: null,
+  previewCollection: null
 };
 
 export function collectionListReducer(state = initialState, action: CollectionActions.CollectionActions) {
@@ -45,6 +47,11 @@ export function collectionListReducer(state = initialState, action: CollectionAc
         ...state,
         randomCollection: state.collections[idx]
       };
+    case CollectionActions.UPDATE_PREVIEW_COLLECTION:
+      return {
+        ...state,
+        previewCollection: action.payload
+      }
     default:
       return state;
   }

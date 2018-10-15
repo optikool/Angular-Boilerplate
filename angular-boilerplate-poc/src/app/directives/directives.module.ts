@@ -1,12 +1,18 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+import { ImageAnimationDirective } from './image-animation.directive';
+
 @NgModule({
-  declarations: [],
+  declarations: [
+    ImageAnimationDirective
+  ],
   imports: [
     CommonModule
   ],
   providers: [],
-  exports: []
+  exports: [
+    ImageAnimationDirective
+  ]
 })
 export class DirectivesModule {}

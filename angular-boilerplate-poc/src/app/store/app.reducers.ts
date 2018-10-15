@@ -1,5 +1,5 @@
-import * as fromCollectionList from './collection.reducers';
 import { ActionReducerMap } from '@ngrx/store';
+import * as fromCollectionList from './collection/collection.reducers';
 
 export interface AppState {
   collectionList: fromCollectionList.State

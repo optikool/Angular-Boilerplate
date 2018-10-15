@@ -7,14 +7,15 @@ import { EffectsModule } from '@ngrx/effects';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
-import { CommonNavModule } from './components/common-nav.module';
+import { ComponentsModule } from './components/components.module';
+import { DirectivesModule } from './directives/directives.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './views/home/home.component';
 import { AnswerComponent } from './views/answer/answer.component';
 import { InstructionsComponent } from './views/instructions/instructions.component';
 import { SharedModule } from './shared/shared.module';
 import { reducers } from './store/app.reducers';
-import { CollectionEffects } from './store/collection.effects';
+import { CollectionEffects } from './store/collection/collection.effects';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { CollectionEffects } from './store/collection.effects';
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    CommonNavModule,
+    ComponentsModule,
+    DirectivesModule,
     SharedModule,
     AppRoutingModule,
     StoreModule.forRoot(reducers),

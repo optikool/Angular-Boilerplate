@@ -1,22 +1,30 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
+import { PreviewComponent } from './preview/preview.component';
+import { NgbdModalDialog } from './modal/modal.component';
 
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    NgbModule
   ],
   declarations: [
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    PreviewComponent,
+    NgbdModalDialog
   ],
   exports: [
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    PreviewComponent,
+    NgbdModalDialog
   ]
 })
-export class CommonNavModule { }
+export class ComponentsModule { }

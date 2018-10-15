@@ -1,5 +1,5 @@
 import { Action } from "@ngrx/store";
-import { Collection } from "../models/collection";
+import { Collection } from "../../models/collection";
 
 export const FETCH_COLLECTIONS = 'FETCH_COLLECTIONS';
 export const GET_COLLECTIONS = 'GET_COLLECTIONS';
@@ -7,6 +7,7 @@ export const ADD_COLLECTIONS = 'ADD_COLLECTIONS';
 export const ADD_COLLECTION = 'ADD_COLLECTION';
 export const GET_RANDOM_COLLECTION = 'GET_RANDOM_COLLECTION';
 export const SET_RANDOM_COLLECTION = 'SET_RANDOM_COLLECTION';
+export const UPDATE_PREVIEW_COLLECTION = 'UPDATE_PREVIEW_COLLECTION';
 
 export class FetchCollections implements Action {
   readonly type = FETCH_COLLECTIONS;
@@ -46,9 +47,16 @@ export class SetRandomeCollection implements Action {
   constructor(public payload: Collection) {}
 }
 
+export class UpdatePreviewCollection implements Action {
+  readonly type = UPDATE_PREVIEW_COLLECTION;
+
+  constructor(public payload: Collection) {}
+}
+
 export type CollectionActions = 
   GetCollections | 
   GetRandomeCollection | 
   SetRandomeCollection | 
   AddCollection |
-  AddCollections;
+  AddCollections |
+  UpdatePreviewCollection;

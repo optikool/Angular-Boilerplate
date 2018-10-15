@@ -1,9 +1,10 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { locale } from '../../constants/locale.constant';
-import { Collection } from '../../models/collection';
+import { Component, OnInit, OnDestroy, AfterViewInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable, Subscription } from 'rxjs';
-import * as CollectionActions from '../../store/collection.actions';
+import { delay } from 'rxjs/operators';
+import { locale } from '../../constants/locale.constant';
+import { Collection } from '../../models/collection';
+import * as CollectionActions from '../../store/collection/collection.actions';
 import * as fromApp from '../../store/app.reducers';
 
 @Component({
@@ -11,7 +12,7 @@ import * as fromApp from '../../store/app.reducers';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit, OnDestroy {
+export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
   locale: any;
   introText: string;
   imagePlaceHolder: Observable<fromApp.AppState>;
@@ -21,12 +22,17 @@ export class HomeComponent implements OnInit, OnDestroy {
   constructor(private store: Store<fromApp.AppState>) { 
     this.locale = null;
     this.introText = '';
+    this.image = null;
   }
 
   ngOnInit() {
     this.locale = locale;
+  }
+
+  ngAfterViewInit() {
     this.store.dispatch(new CollectionActions.FetchCollections());
     this.subscription = this.store.select('collectionList')
+      .pipe(delay(0))
       .subscribe(
         data => {
           this.image = data.randomCollection;
