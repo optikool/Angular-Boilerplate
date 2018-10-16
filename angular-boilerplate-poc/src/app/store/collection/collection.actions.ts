@@ -30,7 +30,7 @@ export class AddCollection implements Action {
 export class AddCollections implements Action {
   readonly type = ADD_COLLECTIONS;
 
-  constructor(public payload: Collection[]) {}
+  constructor(public payload: Array<Collection>) {}
 }
 
 export class GetRandomeCollection implements Action {

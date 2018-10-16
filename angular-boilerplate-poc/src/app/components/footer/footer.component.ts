@@ -19,5 +19,4 @@ export class FooterComponent implements OnInit {
     this.copyYear = date.getFullYear();
     this.locale = locale;
   }
-
 }
