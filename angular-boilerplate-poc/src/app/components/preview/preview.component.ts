@@ -31,6 +31,6 @@ export class PreviewComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.store.dispatch(new CollectionActions.UpdatePreviewCollection(this.locale.NoImageSelected));
-    this.previewLink = this.locale.NoImageSelected;
+    // this.previewLink = this.locale.NoImageSelected;
   }
 }

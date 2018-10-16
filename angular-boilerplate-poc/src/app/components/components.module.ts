@@ -9,16 +9,16 @@ import { PreviewComponent } from './preview/preview.component';
 import { NgbdModalDialog } from './modal/modal.component';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    RouterModule,
-    NgbModule
-  ],
   declarations: [
     HeaderComponent,
     FooterComponent,
     PreviewComponent,
     NgbdModalDialog
+  ],
+  imports: [
+    CommonModule,
+    RouterModule,
+    NgbModule
   ],
   exports: [
     HeaderComponent,

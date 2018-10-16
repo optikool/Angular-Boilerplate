@@ -15,7 +15,7 @@ export class CollectionEffects {
     .pipe(map((action: CollectionActions.GetCollections) => {
       return action.payload
     }))
-    .pipe(switchMap((collectionData: Collection[]) => {
+    .pipe(switchMap((collectionData: Array<Collection>) => {
       const request = {
         method: 'GET',
         url: '/assets/rest/imageList.json',

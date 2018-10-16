@@ -6,7 +6,7 @@ export interface AppState {
 }
 
 export interface State {
-  collections: Collection[];
+  collections: Array<Collection>;
   randomCollection: Collection;
   previewCollection: Collection;
 }
