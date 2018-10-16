@@ -16,6 +16,7 @@ import { InstructionsComponent } from './views/instructions/instructions.compone
 import { SharedModule } from './shared/shared.module';
 import { reducers } from './store/app.reducers';
 import { CollectionEffects } from './store/collection/collection.effects';
+import { NgbdModalDialog } from './components/modal/modal.component';
 
 
 @NgModule({
@@ -37,6 +38,7 @@ import { CollectionEffects } from './store/collection/collection.effects';
     EffectsModule.forRoot([CollectionEffects])
   ],
   providers: [NgbModule],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [NgbdModalDialog]
 })
 export class AppModule { }

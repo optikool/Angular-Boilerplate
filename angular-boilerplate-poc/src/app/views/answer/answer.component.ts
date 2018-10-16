@@ -19,6 +19,7 @@ export class AnswerComponent implements OnInit, OnDestroy, AfterViewInit {
   images: Array<Collection>
   previewLink: Collection;
   subscription: Subscription;
+  closeReason: string;
 
   constructor(private store: Store<fromApp.AppState>, private modalService: NgbModal) {
     this.locale = null;
@@ -30,23 +31,8 @@ export class AnswerComponent implements OnInit, OnDestroy, AfterViewInit {
 
   openModal(data) {
     console.log('Opening image in modal: ', data);
-    // this.modalService.open(collection, {ariaLabelledBy: 'modal-collection-title'})
-    //   .result.then((result) => {
-    //     this.closeReason = `Close with: ${result}`;
-    //   }, (reason) => {
-    //     this.closeReason = `Dismissed ${this.getDismissReason(reason)}`;
-    //   });
-  }
-
-  private getDismissReason(reason: any): string {
-    switch (reason) {
-      case ModalDismissReasons.ESC:
-        return 'by pressing ESC';
-      case ModalDismissReasons.BACKDROP_CLICK:
-        return 'by clicking on a backdrop';
-      default:
-        return `with: ${reason}`;
-    }
+    const modalRef = this.modalService.open(NgbdModalDialog, {size: 'lg', centered: true});
+    modalRef.componentInstance.collection = data;
   }
 
   ngAfterViewInit() {

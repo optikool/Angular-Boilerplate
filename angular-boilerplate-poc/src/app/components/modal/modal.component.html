@@ -1,0 +1,21 @@
+<div class="modal-body-fluid">
+  <div id="modal-description" class="row" descriptionAnimationDirective>
+    <div class="col-md-11">
+      <div>
+          {{collection.descriptions}}
+      </div>
+      <div>
+          -- {{collection.author}}
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12 rounded">
+      <img class="img-fluid mb-1" [src]="collection.link" />
+    </div>
+  </div>
+</div>
+<div class="modal-footer">
+  <div id="footer-name">{{collection.name}}</div>
+  <button type="button" class="btn btn-outline-dark" (click)="close('Close click')">Close</button>
+</div>

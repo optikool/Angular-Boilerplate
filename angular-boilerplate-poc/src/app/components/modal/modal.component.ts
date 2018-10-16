@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { Collection } from '../../models/collection';
 
 @Component({
@@ -6,12 +7,17 @@ import { Collection } from '../../models/collection';
   templateUrl: './modal.component.html',
   styleUrls: ['./modal.component.scss']
 })
-export class NgbdModalDialog {
+export class NgbdModalDialog implements OnInit {
+  @Input() public collection: Collection;
+
   closeReason: string;
 
-  constructor() {}
+  constructor(private activeModal: NgbActiveModal) {}
 
-  open(collection: Collection) {
-    
+  ngOnInit() {
+    console.log('collection: ', this.collection);
+  }
+  close(collection: Collection) {
+    this.activeModal.close();
   }
 }

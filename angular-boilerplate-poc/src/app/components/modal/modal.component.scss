@@ -1,0 +1,38 @@
+.modal-body-fluid {
+  &:hover {
+    #modal-description {
+      opacity: 1;
+    }
+  }
+
+  #modal-description {
+    position: absolute;
+    left: 1rem;
+    top: 1rem;
+    z-index: 100;
+    padding: 10px;
+    font-size: 18px;
+    opacity: 0;
+    -webkit-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+
+    &.show {
+      opacity: 1;
+    }
+
+    >div {
+      box-shadow: 3px 3px 5px 6px #222;
+      background-color: rgba(255, 255, 255, 0.5);
+      >div {
+        padding: 10px;
+      }
+    }
+  }
+}
+
+#footer-name {
+  position: absolute;
+  left: 1rem;
+  font-size: 21px;
+  font-weight: bold;
+}
