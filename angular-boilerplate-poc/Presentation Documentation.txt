@@ -35,3 +35,4 @@ RxJS powered side effect model for @ngrx/store
 Listen for actions dispatched from @ngrx/store.
 Isolate side effects from components, allowing for more pure components that select state and dispatch actions.
 Provide new sources of actions to reduce state based on external interactions such as network requests, web socket messages and time-based events.
+https://angularfirebase.com/lessons/sharing-data-between-angular-components-four-methods/
