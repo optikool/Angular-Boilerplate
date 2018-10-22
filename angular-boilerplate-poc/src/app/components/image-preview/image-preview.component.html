@@ -1,0 +1,18 @@
+<div class="row">
+  <div id="preview-container" class="col-md-4">
+    <img class="img-fluid mb-1 rounded" [src]="previewLink.link" *ngIf="previewLink" />
+  </div>
+  <div class="col-md-8">
+    <div class="row-fluid">
+      <div class="col-md-12" *ngIf="previewLink.name">
+          <h3>{{previewLink.name}}</h3>
+      </div>
+      <div class="col-md-12" *ngIf="previewLink.descriptions">
+        {{previewLink.descriptions}}
+      </div>
+      <div class="col-md-12" *ngIf="previewLink.author">
+        -- {{previewLink.author}}
+      </div>
+    </div>
+  </div>
+</div>

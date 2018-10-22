@@ -12,10 +12,12 @@ import { DirectivesModule } from './directives/directives.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './views/home/home.component';
 import { AnswerComponent } from './views/answer/answer.component';
+import { MusicComponent } from './views/music/music.component';
 import { InstructionsComponent } from './views/instructions/instructions.component';
 import { SharedModule } from './shared/shared.module';
 import { reducers } from './store/app.reducers';
 import { CollectionEffects } from './store/collection/collection.effects';
+import { MusicEffects } from './store/music/music.effects';
 import { NgbdModalDialog } from './components/modal/modal.component';
 
 
@@ -24,6 +26,7 @@ import { NgbdModalDialog } from './components/modal/modal.component';
     AppComponent,
     HomeComponent,
     AnswerComponent,
+    MusicComponent,
     InstructionsComponent
   ],
   imports: [
@@ -35,7 +38,7 @@ import { NgbdModalDialog } from './components/modal/modal.component';
     SharedModule,
     AppRoutingModule,
     StoreModule.forRoot(reducers),
-    EffectsModule.forRoot([CollectionEffects])
+    EffectsModule.forRoot([CollectionEffects, MusicEffects])
   ],
   providers: [NgbModule],
   bootstrap: [AppComponent],

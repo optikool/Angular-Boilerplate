@@ -17,7 +17,7 @@ export class GetCollections implements Action {
   readonly type = GET_COLLECTIONS;
 
   // Retrieve and array of data
-  payload: Array<Collection>;
+  constructor(public payload: Array<Collection>) {};
 }
 
 export class AddCollection implements Action {
@@ -37,7 +37,7 @@ export class GetRandomeCollection implements Action {
   readonly type = GET_RANDOM_COLLECTION;
 
   // Retrieve a single data object
-  payload: Collection
+  constructor(public payload: Collection) {}
 }
 
 export class SetRandomeCollection implements Action {
@@ -53,7 +53,8 @@ export class UpdatePreviewCollection implements Action {
   constructor(public payload: Collection) {}
 }
 
-export type CollectionActions = 
+export type CollectionActions =
+  FetchCollections |
   GetCollections | 
   GetRandomeCollection | 
   SetRandomeCollection | 

@@ -5,14 +5,20 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
-import { PreviewComponent } from './preview/preview.component';
+import { ImagePreviewComponent } from './image-preview/image-preview.component';
+import { MusicItemComponent } from './music-item/music-item.component';
+import { MusicPlayerComponent } from './music-player/music-player.component';
+import { MusicPreviewComponent } from './music-preview/music-preview.component';
 import { NgbdModalDialog } from './modal/modal.component';
 
 @NgModule({
   declarations: [
     HeaderComponent,
     FooterComponent,
-    PreviewComponent,
+    ImagePreviewComponent,
+    MusicItemComponent,
+    MusicPlayerComponent,
+    MusicPreviewComponent,
     NgbdModalDialog
   ],
   imports: [
@@ -23,7 +29,10 @@ import { NgbdModalDialog } from './modal/modal.component';
   exports: [
     HeaderComponent,
     FooterComponent,
-    PreviewComponent,
+    ImagePreviewComponent,
+    MusicItemComponent,
+    MusicPlayerComponent,
+    MusicPreviewComponent,
     NgbdModalDialog
   ]
 })

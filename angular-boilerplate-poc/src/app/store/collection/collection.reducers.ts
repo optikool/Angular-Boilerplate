@@ -1,10 +1,6 @@
 import * as CollectionActions from './collection.actions';
 import { Collection } from '../../models/collection';
 
-export interface AppState {
-  collectionList: State
-}
-
 export interface State {
   collections: Array<Collection>;
   randomCollection: Collection;

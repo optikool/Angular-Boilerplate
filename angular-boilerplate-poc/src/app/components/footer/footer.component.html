@@ -1,20 +1,23 @@
 <nav class="navbar fixed-bottom navbar-expand-lg navbar-dark bg-dark">
-  <div id="navbar-footer" class="row justify-content-between">
-      <div id="copy-year" class="col-md-3 align-items-center">
-        &#169; {{locale.Copyright}} {{copyYear}} {{locale.Brand}}
-      </div>
-      <div class="col-md-3">
-          <ul class="navbar-nav justify-content-end">
-              <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-                  <a class="nav-link" routerLink="/" >{{locale.Home}}</a>
-              </li>
-              <li class="nav-item" routerLinkActive="active">
-                  <a class="nav-link" routerLink="/instructions">{{locale.Instructions}}</a>
-              </li>
-              <li class="nav-item" routerLinkActive="active">
-                  <a class="nav-link" routerLink="/answer">{{locale.Answer}}</a>
-              </li>
-          </ul>
-      </div>
-  </div>
+    <div id="navbar-footer" class="row justify-content-between">
+        <div id="copy-year" class="col-md-3 align-items-center">
+            &#169; {{locale.Copyright}} {{copyYear}} {{locale.Brand}}
+        </div>
+        <div class="col-md-3">
+            <ul class="navbar-nav justify-content-end">
+                <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                    <a class="nav-link" routerLink="/">{{locale.Home}}</a>
+                </li>
+                <li class="nav-item" routerLinkActive="active">
+                    <a class="nav-link" routerLink="/instructions">{{locale.Instructions}}</a>
+                </li>
+                <li class="nav-item" routerLinkActive="active">
+                    <a class="nav-link" routerLink="/answer">{{locale.Answer}}</a>
+                </li>
+                <li class="nav-item" routerLinkActive="active">
+                    <a class="nav-link" routerLink="/music">{{locale.Music}}</a>
+                </li>
+            </ul>
+        </div>
+    </div>
 </nav>
