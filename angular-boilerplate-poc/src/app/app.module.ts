@@ -5,10 +5,13 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgxSoundmanager2Module } from 'ngx-soundmanager2';
+import { SoundManager2 } from 'soundmanager2';
 
 import { AppRoutingModule } from './app-routing.module';
 import { ComponentsModule } from './components/components.module';
 import { DirectivesModule } from './directives/directives.module';
+import { PipesModule } from './pipes/pipes.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './views/home/home.component';
 import { AnswerComponent } from './views/answer/answer.component';
@@ -35,8 +38,10 @@ import { NgbdModalDialog } from './components/modal/modal.component';
     HttpClientModule,
     ComponentsModule,
     DirectivesModule,
+    PipesModule,
     SharedModule,
     AppRoutingModule,
+    NgxSoundmanager2Module.forRoot(SoundManager2),
     StoreModule.forRoot(reducers),
     EffectsModule.forRoot([CollectionEffects, MusicEffects])
   ],

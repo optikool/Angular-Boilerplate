@@ -1,1 +1,11 @@
-<p>Music Item Area</p>
+<div class="row music-item rounded align-middle">
+    <div class="col-1">
+        <img [src]="track.cover" class="img-fluid rounded" alt="{{track.name}}">
+    </div>
+    <div class="col-3 vertical-alignment">
+        {{track.name}}
+    </div>
+    <div class="col-8 vertical-alignment">
+        {{track.description | ellipsisFormatter:30}}
+    </div>
+</div>

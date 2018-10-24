@@ -10,6 +10,7 @@ import { MusicItemComponent } from './music-item/music-item.component';
 import { MusicPlayerComponent } from './music-player/music-player.component';
 import { MusicPreviewComponent } from './music-preview/music-preview.component';
 import { NgbdModalDialog } from './modal/modal.component';
+import { PipesModule } from '../pipes/pipes.module';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { NgbdModalDialog } from './modal/modal.component';
   imports: [
     CommonModule,
     RouterModule,
+    PipesModule,
     NgbModule
   ],
   exports: [
