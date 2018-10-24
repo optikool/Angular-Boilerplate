@@ -16,7 +16,6 @@ export class MusicEffects {
       return action.payload
     }))
     .pipe(switchMap((trackData: Array<Track>) => {
-      console.log('Music Effect data: ', trackData);
       const request = {
         method: 'GET',
         url: '/assets/rest/musicList.json',
@@ -27,11 +26,9 @@ export class MusicEffects {
       return this.http.get(request.url);
     }))
     .pipe(mergeMap((data: Array<any>) => {
-      console.log('Music Effect data: ', data);
       return [{
           type: MusicActions.ADD_TRACKS,
           payload: data
         }];
     }));
-
 }

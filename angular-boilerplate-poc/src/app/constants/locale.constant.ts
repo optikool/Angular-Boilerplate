@@ -12,5 +12,13 @@ export const locale = {
     link: '/assets/images/no-image-selected.jpg',
     descriptions: '',
     author: ''
+  },
+  NoAudioSelected: {
+    'name': '',
+      'link': '',
+      'cover': '/assets/music/images/no-audio-selected.jpg',
+      'description': '',
+      'songs': [],
+      'author': ''
   }
 }

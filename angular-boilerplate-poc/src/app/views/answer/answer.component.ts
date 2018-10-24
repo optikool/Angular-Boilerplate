@@ -30,7 +30,6 @@ export class AnswerComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   openModal(data) {
-    console.log('Opening image in modal: ', data);
     const modalRef = this.modalService.open(NgbdModalDialog, {size: 'lg', centered: true});
     modalRef.componentInstance.collection = data;
   }

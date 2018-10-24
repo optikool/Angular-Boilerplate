@@ -41,7 +41,7 @@ import { NgbdModalDialog } from './components/modal/modal.component';
     PipesModule,
     SharedModule,
     AppRoutingModule,
-    NgxSoundmanager2Module.forRoot(SoundManager2),
+    //NgxSoundmanager2Module.forRoot(SoundManager2),
     StoreModule.forRoot(reducers),
     EffectsModule.forRoot([CollectionEffects, MusicEffects])
   ],

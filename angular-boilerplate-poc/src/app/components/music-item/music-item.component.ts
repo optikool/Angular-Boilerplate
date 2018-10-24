@@ -1,6 +1,8 @@
 import { Component, OnInit, OnDestroy, Input } from '@angular/core';
-import { MusicPlayerService } from 'ngx-soundmanager2';
-import { Track } from 'src/app/models/track';
+import * as fromApp from '../../store/app.reducers';
+import * as MusicActions from '../../store/music/music.actions';
+import { Store } from '@ngrx/store';
+import { Track } from '../../models/track';
 
 @Component({
   selector: 'app-music-item',
@@ -10,7 +12,7 @@ import { Track } from 'src/app/models/track';
 export class MusicItemComponent implements OnInit, OnDestroy {
   @Input() track: Track;
 
-  constructor(private musicPlayerService: MusicPlayerService) {
+  constructor(private store: Store<fromApp.AppState>) {
     // https://github.com/lfarran/ngx-soundmanager2#readme
   }
 
@@ -18,7 +20,11 @@ export class MusicItemComponent implements OnInit, OnDestroy {
 
   }
 
+  loadSoundTrack(track) {
+    this.store.dispatch(new MusicActions.UpdatePreviewTrack(track));
+  }
+
   ngOnDestroy() {
-    
+
   }
 }

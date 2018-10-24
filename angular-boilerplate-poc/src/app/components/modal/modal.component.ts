@@ -10,12 +10,10 @@ import { Collection } from '../../models/collection';
 export class NgbdModalDialog implements OnInit {
   @Input() public collection: Collection;
 
-  closeReason: string;
-
   constructor(private activeModal: NgbActiveModal) {}
 
   ngOnInit() {
-    console.log('collection: ', this.collection);
+
   }
   close(collection: Collection) {
     this.activeModal.close();

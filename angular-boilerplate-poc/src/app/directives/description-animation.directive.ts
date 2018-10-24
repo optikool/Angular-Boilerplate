@@ -7,12 +7,10 @@ export class DescriptionAnimationDirective {
   modalDesc: ElementRef;
 
   @HostListener('mouseover') public onMouseOver() {
-    console.log('Entered content area');
     this.showDescription(true);
   }
 
   @HostListener('mouseout') public onMouseOut() {
-    console.log('Left content area');
     this.showDescription(false);
   }
 

@@ -1,5 +1,9 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { MusicPlayerService } from 'ngx-soundmanager2';
 import { Track } from 'src/app/models/track';
+import { Subscription } from 'rxjs';
+import { Store } from '@ngrx/store';
+import { locale } from '../../constants/locale.constant';
 
 @Component({
   selector: 'app-music-preview',
@@ -8,31 +12,51 @@ import { Track } from 'src/app/models/track';
 })
 export class MusicPreviewComponent implements OnInit, OnDestroy {
   private track: Track;
-  constructor() {
+  private subscription: Subscription;
+  private locale;
+  private isAudioPlaying: string;
 
+  constructor(private store: Store<Track>, private musicPlayerService: MusicPlayerService) {
+    this.locale = locale;
+    this.isAudioPlaying = 'false';
+    this.track = null;
+    this.subscription = null;
   }
 
   ngOnInit() {
-    this.track = {
-      "name": "Midnait - Arenas Eps. 9",
-      "link": "/assets/music/media/Midnait_09_Midnait_Arenas_Eps_09.mp3",
-      "cover": "/assets/music/images/midnait_arenas_eps_9.jpg",
-      "description": "Hey all! This is the next episode in my Resto Druid Arena videos. This is a montage of 2v2 Arenas captured in 4K. The music is taken from Beatport and is a melow Trance soundtrack with the following songs...",
-      "songs": [
-        "Coming home feat. Bo Bruce - Standerwick Extended Mix",
-        "Black Coffee - UCast Extended Remix",
-        "In The Dark - Extended Mix",
-        "Push Through - Extended Mix"
-      ],
-      "author": "Optikool"
-    };
+    this.track = this.locale.NoAudioSelected;
+    this.subscription = this.store.select('trackList')
+      .subscribe(
+        data => {
+          this.track = data.previewTrack ? data.previewTrack : this.locale.NoAudioSelected;
+        }
+      );
   }
 
   hasSongs(songs) {
     return songs.length > 0;
   }
 
+  audioPlaying() {
+    return this.isAudioPlaying === 'true';
+  }
+
+  playTrack() {
+    console.log('Playing Track');
+    this.isAudioPlaying = 'true';
+  }
+
+  pauseTrack() {
+    console.log('Pausing Track');
+    this.isAudioPlaying = 'false';
+  }
+
+  stopTrack() {
+    console.log('Stopping Track');
+    this.isAudioPlaying = 'false';
+  }
+
   ngOnDestroy() {
-    
+
   }
 }

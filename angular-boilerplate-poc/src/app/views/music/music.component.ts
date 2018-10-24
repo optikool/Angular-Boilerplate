@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy, AfterViewInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable, Subscription } from 'rxjs';
+import { MusicPlayerService } from 'ngx-soundmanager2';
 import { locale } from '../../constants/locale.constant';
 import * as fromApp from '../../store/app.reducers';
 import * as MusicActions from '../../store/music/music.actions';
@@ -10,7 +11,7 @@ import { delay } from 'rxjs/operators';
 @Component({
   selector: 'app-music',
   templateUrl: './music.component.html',
-  styleUrls: ['./music.component.scss']
+  styleUrls: ['./music.component.scss'],
 })
 export class MusicComponent implements OnInit, OnDestroy, AfterViewInit {
   soundtracks: Array<Track>;
@@ -28,7 +29,6 @@ export class MusicComponent implements OnInit, OnDestroy, AfterViewInit {
       .pipe(delay(0))
       .subscribe(
         data => {
-          console.log('MusicActions data: ', data);
           this.soundtracks = data.soundtracks;
         }
       );

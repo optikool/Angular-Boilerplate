@@ -14,17 +14,12 @@ const initialState: State = {
 };
 
 export function trackListReducer(state = initialState, action: MusicActions.MusicActions) {
-  console.log('trackListReducer action.type: ', action.type);
   switch (action.type) {
     case MusicActions.GET_TRACKS:
-      console.log('trackListReducer GET_TRACKS state: ', state);
-      console.log('trackListReducer GET_TRACKS action: ', action.payload);
       return {
         ...state
       };
     case MusicActions.ADD_TRACKS:
-      console.log('trackListReducer ADD_TRACKS state: ', state);
-      console.log('trackListReducer ADD_TRACKS action: ', action.payload);
       return {
         ...state,
         soundtracks: action.payload

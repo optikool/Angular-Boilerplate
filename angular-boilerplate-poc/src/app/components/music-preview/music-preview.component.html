@@ -1,6 +1,11 @@
 <div id="music-preview" class="row">
     <div id="preview-container" class="col-md-4">
         <img class="img-fluid mb-1 rounded" [src]="track.cover" *ngIf="track" />
+        <div id="player-buttons">
+          <span class="material-icons" *ngIf="!audioPlaying()" (click)="playTrack()">play_arrow</span>&nbsp;
+          <span class="material-icons" *ngIf="audioPlaying()" (click)="pauseTrack()">pause</span>&nbsp;
+          <span class="material-icons" (click)="stopTrack()">stop</span>
+        </div>
     </div>
     <div class="col-md-8">
         <div class="row-fluid">
