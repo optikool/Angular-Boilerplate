@@ -5,8 +5,10 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgxSoundmanager2Module } from 'ngx-soundmanager2';
-import { SoundManager2 } from 'soundmanager2';
+import { VgCoreModule } from 'videogular2/core';
+import { VgControlsModule } from 'videogular2/controls';
+import { VgOverlayPlayModule } from 'videogular2/overlay-play';
+// import { NgxSoundmanager2Module } from 'ngx-soundmanager2';
 
 import { AppRoutingModule } from './app-routing.module';
 import { ComponentsModule } from './components/components.module';
@@ -33,6 +35,9 @@ import { NgbdModalDialog } from './components/modal/modal.component';
     InstructionsComponent
   ],
   imports: [
+    VgCoreModule,
+    VgControlsModule,
+    VgOverlayPlayModule,
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
@@ -41,7 +46,7 @@ import { NgbdModalDialog } from './components/modal/modal.component';
     PipesModule,
     SharedModule,
     AppRoutingModule,
-    //NgxSoundmanager2Module.forRoot(SoundManager2),
+    //NgxSoundmanager2Module.forRoot(),
     StoreModule.forRoot(reducers),
     EffectsModule.forRoot([CollectionEffects, MusicEffects])
   ],

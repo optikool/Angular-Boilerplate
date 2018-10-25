@@ -11,6 +11,9 @@ import { MusicPlayerComponent } from './music-player/music-player.component';
 import { MusicPreviewComponent } from './music-preview/music-preview.component';
 import { NgbdModalDialog } from './modal/modal.component';
 import { PipesModule } from '../pipes/pipes.module';
+import { VgCoreModule } from 'videogular2/core';
+import { VgControlsModule } from 'videogular2/controls';
+import { VgOverlayPlayModule } from 'videogular2/overlay-play';
 
 @NgModule({
   declarations: [
@@ -26,7 +29,10 @@ import { PipesModule } from '../pipes/pipes.module';
     CommonModule,
     RouterModule,
     PipesModule,
-    NgbModule
+    NgbModule,
+    VgCoreModule,
+    VgControlsModule,
+    VgOverlayPlayModule,
   ],
   exports: [
     HeaderComponent,

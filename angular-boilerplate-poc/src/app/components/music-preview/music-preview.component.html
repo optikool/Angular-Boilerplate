@@ -2,9 +2,12 @@
     <div id="preview-container" class="col-md-4">
         <img class="img-fluid mb-1 rounded" [src]="track.cover" *ngIf="track" />
         <div id="player-buttons">
-          <span class="material-icons" *ngIf="!audioPlaying()" (click)="playTrack()">play_arrow</span>&nbsp;
+          <!-- <span class="material-icons" playMusic>play_arrow</span>&nbsp;
+          <span class="material-icons" pauseMusic>pause</span>&nbsp;
+          <span class="material-icons" stopMusic>stop</span> -->
+          <!-- <span class="material-icons" *ngIf="!audioPlaying()" (click)="playTrack()">play_arrow</span>&nbsp;
           <span class="material-icons" *ngIf="audioPlaying()" (click)="pauseTrack()">pause</span>&nbsp;
-          <span class="material-icons" (click)="stopTrack()">stop</span>
+          <span class="material-icons" (click)="stopTrack()">stop</span> -->
         </div>
     </div>
     <div class="col-md-8">
@@ -24,6 +27,26 @@
             </div>
             <div class="col-md-12" *ngIf="track.author">
               -- {{track.author}}
+            </div>
+            <div class="col-md-12" *ngIf="track.link">
+                    <vg-player>
+                            <vg-controls vg-autohide="true" vg-autohide-time="2000">
+                                <vg-play-pause></vg-play-pause>
+
+                                <vg-time-display vgProperty="current" vgFormat="mm:ss"></vg-time-display>
+    
+                                <vg-scrub-bar style="pointer-events: none;"></vg-scrub-bar>
+    
+                                <vg-time-display vgProperty="left" vgFormat="mm:ss"></vg-time-display>
+                                <vg-time-display vgProperty="total" vgFormat="mm:ss"></vg-time-display>
+                                <vg-mute></vg-mute>
+                                <vg-volume></vg-volume>
+                            </vg-controls>
+    
+                            <audio [vgMedia]="media" #media id="singleVideo" preload="auto" crossorigin>
+                                <source [src]="track.link" type="audio/mp3">
+                            </audio>
+                        </vg-player>
             </div>
         </div>
     </div>
