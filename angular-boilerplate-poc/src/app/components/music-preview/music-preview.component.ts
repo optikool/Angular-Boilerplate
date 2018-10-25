@@ -19,6 +19,10 @@ export class MusicPreviewComponent implements OnInit, OnDestroy {
   private locale;
   private api: VgAPI;
   private playingSubscription: Subscription;
+  private loadStartSubscription: Subscription;
+  private loadedDataSubscription: Subscription;
+  private progressSubscription: Subscription;
+  private endedSubscription: Subscription;
 
   currentPlaying: any;
 
@@ -61,12 +65,12 @@ export class MusicPreviewComponent implements OnInit, OnDestroy {
         console.log('Now playing');
       });
 
-      this.api.getDefaultMedia().subscriptions.loadStart
+    this.loadStartSubscription = this.api.getDefaultMedia().subscriptions.loadStart
       .subscribe(() => {
         console.log('Track started loading');
       });
 
-      this.api.getDefaultMedia().subscriptions.loadedData
+    this.loadedDataSubscription = this.api.getDefaultMedia().subscriptions.loadedData
       .subscribe(() => {
         console.log('Track has been loaded');
         // this.wavesurfer = WaveSurfer.create({
@@ -80,12 +84,12 @@ export class MusicPreviewComponent implements OnInit, OnDestroy {
         // this.wavesurfer.play();
       });
 
-      this.api.getDefaultMedia().subscriptions.progress
+    this.progressSubscription = this.api.getDefaultMedia().subscriptions.progress
       .subscribe(() => {
         console.log('Current Track progress: ', this.api.getDefaultMedia().currentTime);
       });
 
-      this.api.getDefaultMedia().subscriptions.ended
+    this.endedSubscription = this.api.getDefaultMedia().subscriptions.ended
       .subscribe(() => {
         console.log('Current Track ended');
       });
@@ -93,5 +97,9 @@ export class MusicPreviewComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.playingSubscription.unsubscribe();
+    this.loadStartSubscription.unsubscribe();
+    this.loadedDataSubscription.unsubscribe();
+    this.progressSubscription.unsubscribe();
+    this.endedSubscription.unsubscribe();
   }
 }
