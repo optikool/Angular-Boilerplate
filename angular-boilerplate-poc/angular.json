@@ -27,10 +27,14 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/material-icons/iconfont/material-icons.scss",
+              "./node_modules/bootstrap/scss/bootstrap.scss",
               "./node_modules/videogular2/fonts/videogular.css",
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "./node_modules/wavesurfer.js/dist/wavesurfer.js"
+            ]
           },
           "configurations": {
             "production": {

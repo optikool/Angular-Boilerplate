@@ -1,19 +1,15 @@
 #music-preview {
     padding-bottom: 20px;
 
-    #player-buttons {
-      .material-icons {
-        font-size: 52px;
-        color: #666;
-
-        &:hover {
-          cursor: pointer;
-          color: green;
-        }
-      }
+    #player-container {
+      margin-top: 15px;
     }
 
     vg-player {
         height: 50px;
+    }
+
+    vg-volume {
+      padding-right: 15px;
     }
 }

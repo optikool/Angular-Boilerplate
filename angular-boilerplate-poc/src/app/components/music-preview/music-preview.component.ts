@@ -3,6 +3,9 @@ import { Track } from 'src/app/models/track';
 import { Subscription } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { locale } from '../../constants/locale.constant';
+import { VgAPI } from 'videogular2/core';
+
+declare const WaveSurfer;
 
 @Component({
   selector: 'app-music-preview',
@@ -14,8 +17,8 @@ export class MusicPreviewComponent implements OnInit, OnDestroy {
   private track: Track;
   private subscription: Subscription;
   private locale;
-  private isAudioPlaying: string;
-  private song;
+  private api: VgAPI;
+  private playingSubscription: Subscription;
 
   currentPlaying: any;
 
@@ -23,13 +26,10 @@ export class MusicPreviewComponent implements OnInit, OnDestroy {
   currentTrackDuration: number;
   currentTrackProgress: number;
   volume: number;
-
-  // subscriptions
-  private musicPlayerTrackIdSubscription: any;
+  wavesurfer;
 
   constructor(private store: Store<Track>) {
     this.locale = locale;
-    this.isAudioPlaying = 'false';
     this.track = null;
     this.subscription = null;
   }
@@ -43,52 +43,55 @@ export class MusicPreviewComponent implements OnInit, OnDestroy {
           console.log('track: ', this.track);
         }
       );
-
-      // this.currentPlaying = this.musicPlayerService.currentTrackData();
-      // this.musicPlayerTrackIdSubscription = this.musicPlayerService.musicPlayerTrackEventEmitter
-      //   .subscribe((event: any) => {
-      //     this.currentPlaying = this.musicPlayerService.currentTrackData();
-      //     this.currentTrackPostion = event.data.trackPosition;
-      //     this.currentTrackDuration = event.data.trackDuration;
-      //     this.currentTrackProgress = event.data.trackProgress;
-      //   });
-
-      this.song = [{
-        id: 'one',
-        title: 'Kick It',
-        artist: 'Raised On Zenith',
-        url: 'https://popplers5.bandcamp.com/download/track?enc=mp3-128&fsig=10442536bc89f9881e8da2eb81ecd5fb&id=120877506&stream=1&ts=1502502685.0'
-      }];
   }
 
   hasSongs(songs) {
     return songs.length > 0;
   }
 
-  audioPlaying() {
-    return this.isAudioPlaying === 'true';
+  onPlayerReady(api: VgAPI) {
+    this.api = api;
+    console.log('Player is ready');
+    this.loadSubscriptions();
   }
 
-  playTrack() {
-    console.log('Playing Track');
-    this.isAudioPlaying = 'true';
-  }
+  loadSubscriptions() {
+    this.playingSubscription = this.api.getDefaultMedia().subscriptions.playing
+      .subscribe(() => {
+        console.log('Now playing');
+      });
 
-  pauseTrack() {
-    console.log('Pausing Track');
-    this.isAudioPlaying = 'false';
-  }
+      this.api.getDefaultMedia().subscriptions.loadStart
+      .subscribe(() => {
+        console.log('Track started loading');
+      });
 
-  stopTrack() {
-    console.log('Stopping Track');
-    this.isAudioPlaying = 'false';
-  }
+      this.api.getDefaultMedia().subscriptions.loadedData
+      .subscribe(() => {
+        console.log('Track has been loaded');
+        // this.wavesurfer = WaveSurfer.create({
+        //   container: '#waveform',
+        //   waveColr: 'grey',
+        //   progressColor: 'purple',
+        //   scrollParent: true
+        // });
+    
+        // this.wavesurfer.load(this.track.link);
+        // this.wavesurfer.play();
+      });
 
-  // get progress(): string {
-  //   return this.currentTrackProgress ? (this.currentTrackProgress.toString() + '%') : '0%';
-  // }
+      this.api.getDefaultMedia().subscriptions.progress
+      .subscribe(() => {
+        console.log('Current Track progress: ', this.api.getDefaultMedia().currentTime);
+      });
+
+      this.api.getDefaultMedia().subscriptions.ended
+      .subscribe(() => {
+        console.log('Current Track ended');
+      });
+  }
 
   ngOnDestroy() {
-    this.musicPlayerTrackIdSubscription.unsubscribe();
+    this.playingSubscription.unsubscribe();
   }
 }

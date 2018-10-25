@@ -1,53 +1,45 @@
 <div id="music-preview" class="row">
-    <div id="preview-container" class="col-md-4">
-        <img class="img-fluid mb-1 rounded" [src]="track.cover" *ngIf="track" />
-        <div id="player-buttons">
-          <!-- <span class="material-icons" playMusic>play_arrow</span>&nbsp;
-          <span class="material-icons" pauseMusic>pause</span>&nbsp;
-          <span class="material-icons" stopMusic>stop</span> -->
-          <!-- <span class="material-icons" *ngIf="!audioPlaying()" (click)="playTrack()">play_arrow</span>&nbsp;
-          <span class="material-icons" *ngIf="audioPlaying()" (click)="pauseTrack()">pause</span>&nbsp;
-          <span class="material-icons" (click)="stopTrack()">stop</span> -->
-        </div>
-    </div>
-    <div class="col-md-8">
-        <div class="row-fluid">
-            <div class="col-md-12" *ngIf="track.name">
-                <h3>{{track.name}}</h3>
-            </div>
-            <div class="col-md-12" *ngIf="track.description">
-              {{track.description}}
-            </div>
-            <div class="col-md-12" *ngIf="hasSongs(track.songs)">
-                <ul>
-                    <li *ngFor="let song of track.songs">
-                        {{song}}
-                    </li>
-                </ul>
-            </div>
-            <div class="col-md-12" *ngIf="track.author">
-              -- {{track.author}}
-            </div>
-            <div class="col-md-12" *ngIf="track.link">
-                    <vg-player>
-                            <vg-controls vg-autohide="true" vg-autohide-time="2000">
-                                <vg-play-pause></vg-play-pause>
+  <div id="preview-container" class="col-md-4">
+    <img class="img-fluid mb-1 rounded" [src]="track.cover" *ngIf="track" />
+  </div>
+  <div class="col-md-8">
+    <div class="row-fluid">
+      <div class="col-md-12" *ngIf="track.name">
+        <h3>{{track.name}}</h3>
+      </div>
+      <div class="col-md-12" *ngIf="track.description">
+        {{track.description}}
+      </div>
+      <div class="col-md-12" *ngIf="hasSongs(track.songs)">
+        <ul>
+          <li *ngFor="let song of track.songs">
+            {{song}}
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-12" *ngIf="track.author">
+        -- {{track.author}}
+      </div>
+      <div id="player-container" class="col-md-12" *ngIf="track.link">
+        <vg-player (onPlayerReady)="onPlayerReady($event)">
+          <vg-controls vg-autohide="true" vg-autohide-time="2000">
+            <vg-play-pause></vg-play-pause>
 
-                                <vg-time-display vgProperty="current" vgFormat="mm:ss"></vg-time-display>
-    
-                                <vg-scrub-bar style="pointer-events: none;"></vg-scrub-bar>
-    
-                                <vg-time-display vgProperty="left" vgFormat="mm:ss"></vg-time-display>
-                                <vg-time-display vgProperty="total" vgFormat="mm:ss"></vg-time-display>
-                                <vg-mute></vg-mute>
-                                <vg-volume></vg-volume>
-                            </vg-controls>
-    
-                            <audio [vgMedia]="media" #media id="singleVideo" preload="auto" crossorigin>
-                                <source [src]="track.link" type="audio/mp3">
-                            </audio>
-                        </vg-player>
-            </div>
-        </div>
+            <vg-time-display vgProperty="current" vgFormat="mm:ss"></vg-time-display>
+
+            <vg-scrub-bar style="pointer-events: none;"></vg-scrub-bar>
+
+            <vg-time-display vgProperty="left" vgFormat="mm:ss"></vg-time-display>
+            <vg-time-display vgProperty="total" vgFormat="mm:ss"></vg-time-display>
+            <vg-mute></vg-mute>
+            <vg-volume></vg-volume>
+          </vg-controls>
+
+          <audio [vgMedia]="media" [src]="track.link" #media id="singleVideo" preload="auto" crossorigin>
+            <source [src]="track.link" type="audio/mp3">
+          </audio>
+        </vg-player>
+      </div>
     </div>
+  </div>
 </div>
